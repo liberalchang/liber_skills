@@ -7,6 +7,13 @@
 
 ## Skills 列表
 
+### skill-python-env
+
+- **名称**：`skill-python-env`
+- **描述**：管理 OpenClaw skill 的 Python 虚拟环境。在 `~/.python_env/<env_name>` 下检查、创建环境；自动安装 uv（若未安装）。供其他需要 Python 环境的 skill 调用。
+- **版本**：`1.0.0`
+- **目录**：`skill-python-env/`
+
 ### frontendslides
 
 - **名称**：`frontend-slides`
@@ -46,6 +53,7 @@
 
 当前版本按你的约定为：
 
+- `skill-python-env`：`1.0.0`
 - `frontendslides`：`1.0.0`
 - `barkpush`：`1.2.0`
 - `nano-banana-pro-openrouter`：`v1.0.0`
