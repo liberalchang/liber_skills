@@ -35,6 +35,20 @@
 - **版本**：`v1.0.0`
 - **目录**：`nano-banana-pro-openrouter/`
 
+### liber-speechapi
+
+- **名称**：`liber-speechapi`
+- **描述**：使用 Liber SpeechAPI 进行三种语音工作流程：(1) Telegram/openclaw 语音消息处理，包括 ASR 转录、简洁回复摘要和 Telegram 兼容的 OGG/Opus TTS 合成，(2) 直接文本到语音生成，(3) 直接语音到文本转录。支持基于环境的配置、可选的语音克隆功能，以及在共享 python-env 技能和本地 Python 环境之间的 fallback 机制。
+- **版本**：`1.0.0`
+- **目录**：`liber-speechapi/`
+
+### html2pptx
+
+- **名称**：`html2pptx`
+- **描述**：将HTML演示文稿转换为PowerPoint(PPTX)格式。支持frontend-slides生成的HTML，保留结构、样式和内容。触发词：html转pptx、html2pptx、转换ppt、生成pptx
+- **版本**：`3.0.0`
+- **目录**：`html2pptx/`
+
 ## 安装方法（参考 Clawhub）
 
 ### 方式 A：从 Clawhub 商店安装（上架后）
@@ -57,3 +71,5 @@
 - `frontendslides`：`1.0.0`
 - `barkpush`：`1.2.0`
 - `nano-banana-pro-openrouter`：`v1.0.0`
+- `liber-speechapi`：`1.0.0`
+- `html2pptx`：`3.0.0`
