@@ -119,18 +119,38 @@ def load_env() -> dict[str, Any]:
     script_dir = Path(__file__).resolve().parent
     skill_dir = script_dir.parent
 
-    for candidate in (skill_dir / ".env", Path.cwd() / ".env"):
-        load_dotenv(candidate)
-
+    # First, try loading from environment variables
     base_url = os.getenv("LIBER_API_BASE_URL", "").strip().rstrip("/")
     api_key = os.getenv("LIBER_API_KEY", "").strip()
 
-    if not base_url:
-        raise ConfigError("Missing LIBER_API_BASE_URL in .env")
-    if not api_key:
-        raise ConfigError("Missing LIBER_API_KEY in .env")
+    # If not found in environment variables, try loading from ~/.openclaw/.env
+    if not base_url or not api_key:
+        openclaw_env_path = Path.home() / ".openclaw" / ".env"
+        load_dotenv(openclaw_env_path)
+        base_url = os.getenv("LIBER_API_BASE_URL", "").strip().rstrip("/")
+        api_key = os.getenv("LIBER_API_KEY", "").strip()
 
-    config_json = load_config_json(skill_dir / "config.json")
+    # Finally, try loading from local .env files (skill directory or current working directory)
+    if not base_url or not api_key:
+        for candidate in (skill_dir / ".env", Path.cwd() / ".env"):
+            load_dotenv(candidate)
+            base_url = os.getenv("LIBER_API_BASE_URL", "").strip().rstrip("/")
+            api_key = os.getenv("LIBER_API_KEY", "").strip()
+            if base_url and api_key:
+                break
+
+    if not base_url:
+        raise ConfigError("Missing LIBER_API_BASE_URL. Please set it in environment variables, ~/.openclaw/.env, or local .env file")
+    if not api_key:
+        raise ConfigError("Missing LIBER_API_KEY. Please set it in environment variables, ~/.openclaw/.env, or local .env file")
+
+    # Load config from external location to prevent overwrites during skill updates
+    config_path = Path.home() / ".openclaw" / "workspace" / "config" / "speechapi_config.json"
+    if config_path.exists():
+        config_json = load_config_json(config_path)
+    else:
+        # Fallback to local config if external config doesn't exist
+        config_json = load_config_json(skill_dir / "config.json")
 
     return {
         "base_url": base_url,

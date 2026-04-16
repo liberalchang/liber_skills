@@ -35,11 +35,13 @@ When running local Python commands:
 
 ### `.env`
 
-Load core service settings from `.env` in:
-1. the skill directory, or
-2. the current working directory
+Load core service settings from `.env` in priority order:
+1. environment variables (`LIBER_API_BASE_URL` and `LIBER_API_KEY`)
+2. `~/.openclaw/.env` file (for global configuration)
+3. the skill directory's `.env` file
+4. the current working directory's `.env` file
 
-If both exist, prefer the skill-local `.env`.
+Environment variables take the highest priority, followed by the global config file `~/.openclaw/.env`, then local skill directory, and finally the current working directory.
 
 Required settings:
 - `LIBER_API_BASE_URL`
@@ -47,7 +49,8 @@ Required settings:
 
 ### `config.json`
 
-Load detailed defaults from `config.json` in the skill directory.
+Load detailed defaults from `speechapi_config.json` in `~/.openclaw/workspace/config/` to prevent overwrites during skill updates.
+Fallback to local `config.json` if the external config doesn't exist.
 
 Key behavior:
 - values of `"default"` or `null` are omitted from API requests

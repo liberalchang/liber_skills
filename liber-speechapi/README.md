@@ -24,6 +24,24 @@
 - **FFmpeg**（用于音频转码，TTS 多格式输出需要）
 - **可选**：CUDA（GPU 加速）
 
+### 配置优先级
+
+环境配置按以下优先级顺序加载：
+
+1. **环境变量**：`LIBER_API_BASE_URL` 和 `LIBER_API_KEY`（最高优先级）
+2. **全局配置文件**：`~/.openclaw/.env`（用于跨项目共享配置）
+3. **项目内配置**：技能目录下的 `.env` 文件
+4. **当前工作目录**：当前工作目录下的 `.env` 文件（最低优先级）
+
+这样可以灵活地在不同层级进行配置，满足全局、项目和个人需求。
+
+### 配置文件存储
+
+为了防止在更新技能时丢失用户配置，详细的配置参数存储在以下位置：
+
+1. **首选位置**：`~/.openclaw/workspace/config/speechapi_config.json`（防止更新时被覆盖）
+2. **备用位置**：本地的 `config.json`（用于兼容性）
+
 ### 部署步骤
 
 1. 克隆项目：
@@ -56,6 +74,14 @@
    # 诊断环境
    uv run liber-speech doctor
    ```
+
+5. 配置 API 凭据：
+   根据上述优先级规则，在合适的位置设置 `LIBER_API_BASE_URL` 和 `LIBER_API_KEY`，例如：
+   - 在 `~/.openclaw/.env` 中设置全局凭据
+   - 或在环境变量中设置特定会话的凭据
+
+6. 配置详细参数：
+   如需自定义ASR/TTS参数，创建 `~/.openclaw/workspace/config/speechapi_config.json` 文件以避免在技能更新时丢失配置
 
 ### Web 服务部署选项
 

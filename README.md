@@ -49,6 +49,13 @@
 - **版本**：`3.0.0`
 - **目录**：`html2pptx/`
 
+### openclaw-skill-manager
+
+- **名称**：`openclaw-skill-manager`
+- **描述**：管理 OpenClaw 技能安装、查询、更新和位置调整。支持多空间架构（系统内置、全局、主脑、专才空间）。动态识别当前 Agent 配置和技能分布。触发词：管理技能、安装skill、查询skill、更新skill、移动skill、/skill
+- **版本**：`3.1.0`
+- **目录**：`openclaw-skill-manager/`
+
 ## 安装方法（参考 Clawhub）
 
 ### 方式 A：从 Clawhub 商店安装（上架后）
@@ -73,3 +80,4 @@
 - `nano-banana-pro-openrouter`：`v1.0.0`
 - `liber-speechapi`：`1.0.0`
 - `html2pptx`：`3.0.0`
+- `openclaw-skill-manager`：`3.1.1`

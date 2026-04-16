@@ -43,6 +43,13 @@ A collection of personal skills. Each skill is independently maintained with its
 - **Version**: `3.0.0`
 - **Directory**: `html2pptx/`
 
+### openclaw-skill-manager
+
+- **Name**: `openclaw-skill-manager`
+- **Description**: Manage OpenClaw skill installation, query, update, and location adjustment. Supports multi-space architecture (system built-in, global, main brain, expert space). Dynamically identifies current Agent configuration and skill distribution. Trigger words: manage skills, install skill, query skill, update skill, move skill, /skill
+- **Version**: `3.1.1`
+- **Directory**: `openclaw-skill-manager/`
+
 ## Installation Methods (Reference Clawhub)
 
 ### Method A: Install from Clawhub Store (After Publishing)
@@ -67,3 +74,4 @@ Current versions as agreed:
 - `nano-banana-pro-openrouter`: `v1.0.0`
 - `liber-speechapi`: `1.0.0`
 - `html2pptx`: `3.0.0`
+- `openclaw-skill-manager`: `3.1.0`
